@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+    <h1>❤️ Heart Disease Prediction</h1>
+    <p class="subtitle">Enter patient details to predict heart disease risk</p>
+
+    <div class="grid">
+        <input type="number" id="age" placeholder="Age">
+        <select id="sex">
+            <option value="">Sex</option>
+            <option value="0">Female 0</option>
+            <option value="1">Male 1</option>
+        </select>
+
+        <input type="number" id="cp" placeholder="Chest Pain Type">
+        <input type="number" id="trestbps" placeholder="Resting BP">
+
+        <input type="number" id="chol" placeholder="Cholesterol">
+        <input type="number" id="fbs" placeholder="Fasting Blood Sugar">
+
+        <input type="number" id="restecg" placeholder="Rest ECG">
+        <input type="number" id="thalach" placeholder="Max Heart Rate">
+
+        <input type="number" id="exang" placeholder="Exercise Angina">
+        <input type="number" step="0.1" id="oldpeak" placeholder="Oldpeak">
+
+        <input type="number" id="slope" placeholder="Slope">
+        <input type="number" id="ca" placeholder="CA">
+
+        <input type="number" id="thal" placeholder="Thal">
+    </div>
+
+    <button onclick="predict()">Predict Now</button>
+    <button class="clear-btn" onclick="clearForm()">Clear</button>
+    
+    <div id="result" class="result"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
