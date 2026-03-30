@@ -18,7 +18,7 @@
 
 ### 🖥️ Frontend — Step 1: Personal Info (Dark Luxury UI)
 
-![CardioSense Frontend Screenshot](https://raw.githubusercontent.com/zerotwo5/heart-disease-prediction-Ai_v1.0/master/frontend/Frontend%20v1.0/screenshot.png)
+![CardioSense Frontend Screenshot](https://i.postimg.cc/NFznynhJ/Screenshot-2026-03-30-142213.png)
 
 > *Multi-step form with ECG animation, dark luxury theme, and clean UX design.*
 
