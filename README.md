@@ -233,5 +233,5 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 <div align="center">
-Made with ❤️ using FastAPI + scikit-learn
+Made by md.pranto025 with ❤️ using FastAPI + scikit-learn
 </div>
