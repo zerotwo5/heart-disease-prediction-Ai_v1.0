@@ -54,6 +54,11 @@ heart-disease-prediction-Ai_v1.0/
         ├── index.html         # Main HTML file (multi-step form)
         ├── style.css          # Dark luxury UI styling
         └── script.js          # Form logic, API calls, result rendering
+        
+    └── Frontend v2.0/
+        ├── index.html         # Main HTML file (multi-step form)
+        ├── style.css          # Dark luxury UI styling
+        └── script.js          # Form logic, API calls, result rendering
 ```
 
 ---
