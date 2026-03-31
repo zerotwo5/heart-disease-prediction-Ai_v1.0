@@ -52,10 +52,10 @@ heart-disease-prediction-Ai_v1.0/
 │
 └── frontend/
     └── Frontend v1.0/
-        ├── index.html         # Main HTML file (single-step form)
-        ├── style.css          # Simple UI
-        └── script.js          # Form logic, API calls, result rendering
-        
+    │   ├── index.html         # Main HTML file (single-step form)
+    │   ├── style.css          # Simple UI
+    │   └── script.js          # Form logic, API calls, result rendering
+    │   
     └── Frontend v2.0/
         ├── index.html         # Main HTML file (multi-step form)
         ├── style.css          # Dark luxury UI styling
@@ -173,12 +173,14 @@ Open the frontend in your browser:
 frontend/Frontend v1.0/index.html
 ```
 
-> Make sure your browser allows local file API calls, or serve it using a simple HTTP server:
+> Start the API server using Uvicorn. Then add the API endpoint URL to the `script.js` file in the frontend. After that, simply open the `index.html` file in your browser and the application will work.
+
+> If you want to make the API accessible globally instead of running it locally, you can deploy it using services like Render. After deployment, update the API URL in `script.js` with the deployed endpoint.
+
 > ```bash
-> cd "frontend/Frontend v1.0"
-> python -m http.server 5500
+>  fetch("http://127.0.0.1:8000/predict", {
 > ```
-> Then visit `http://localhost:5500`
+> Then open `index.html`
 
 ---
 
