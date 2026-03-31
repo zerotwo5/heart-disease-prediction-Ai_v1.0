@@ -48,11 +48,12 @@ heart-disease-prediction-Ai_v1.0/
 │
 ├── dataset/                   # Dataset used for model training
 │   └── heart.csv (or similar)
+│   └── heart_data_for_testing.xlsx
 │
 └── frontend/
     └── Frontend v1.0/
-        ├── index.html         # Main HTML file (multi-step form)
-        ├── style.css          # Dark luxury UI styling
+        ├── index.html         # Main HTML file (single-step form)
+        ├── style.css          # Simple UI
         └── script.js          # Form logic, API calls, result rendering
         
     └── Frontend v2.0/
