@@ -170,7 +170,7 @@ You can explore the interactive API docs at: `http://127.0.0.1:8000/docs`
 Open the frontend in your browser:
 
 ```
-frontend/Frontend v1.0/index.html
+frontend/Frontend v2.0/index.html
 ```
 
 > Start the API server using Uvicorn. Then add the API endpoint URL to the `script.js` file in the frontend. After that, simply open the `index.html` file in your browser and the application will work.
