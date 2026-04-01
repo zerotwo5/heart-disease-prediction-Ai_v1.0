@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Animated background blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <!-- ECG Line decoration -->
+    <div class="ecg-decoration">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline class="ecg-line" points="
+                0,40 100,40 130,40 145,10 160,70 175,5 190,75 205,40 230,40
+                330,40 360,40 375,10 390,70 405,5 420,75 435,40 460,40
+                560,40 590,40 605,10 620,70 635,5 650,75 665,40 690,40
+                790,40 820,40 835,10 850,70 865,5 880,75 895,40 920,40
+                1020,40 1050,40 1065,10 1080,70 1095,5 1110,75 1125,40 1200,40
+            "/>
+        </svg>
+    </div>
+
+    <div class="wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="heart-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+                </svg>
+            </div>
+            <div class="header-text">
+                <h1>CardioSense</h1>
+                <p class="subtitle">AI-Powered Heart Disease Risk Assessment</p>
+            </div>
+        </header>
+
+        <div class="card">
+
+            <!-- Step Indicator -->
+            <div class="steps">
+                <div class="step active" data-step="1">
+                    <span class="step-num">01</span>
+                    <span class="step-label">Personal</span>
+                </div>
+                <div class="step-divider"></div>
+                <div class="step" data-step="2">
+                    <span class="step-num">02</span>
+                    <span class="step-label">Clinical</span>
+                </div>
+                <div class="step-divider"></div>
+                <div class="step" data-step="3">
+                    <span class="step-num">03</span>
+                    <span class="step-label">Advanced</span>
+                </div>
+            </div>
+
+            <form id="prediction-form" onsubmit="return false;">
+
+                <!-- Section 1: Personal Info -->
+                <div class="section active" id="section-1">
+                    <p class="section-hint">Basic patient information</p>
+                    <div class="input-grid">
+
+                        <div class="field">
+                            <label for="age">Age</label>
+                            <div class="input-wrap">
+                                <input type="number" id="age" placeholder="e.g. 54" min="1" max="120">
+                                <span class="unit">yrs</span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="sex">Sex</label>
+                            <div class="input-wrap select-wrap">
+                                <select id="sex">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">Female</option>
+                                    <option value="1">Male</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field full">
+                            <label for="cp">Chest Pain Type</label>
+                            <div class="radio-group">
+                                <label class="radio-btn">
+                                    <input type="radio" name="cp" value="0">
+                                    <span>Typical Angina</span>
+                                </label>
+                                <label class="radio-btn">
+                                    <input type="radio" name="cp" value="1">
+                                    <span>Atypical Angina</span>
+                                </label>
+                                <label class="radio-btn">
+                                    <input type="radio" name="cp" value="2">
+                                    <span>Non-Anginal</span>
+                                </label>
+                                <label class="radio-btn">
+                                    <input type="radio" name="cp" value="3">
+                                    <span>Asymptomatic</span>
+                                </label>
+                            </div>
+                            <input type="hidden" id="cp">
+                        </div>
+
+                    </div>
+                    <div class="nav-btns">
+                        <span></span>
+                        <button type="button" class="btn-next" onclick="nextSection(1)">Next <span>→</span></button>
+                    </div>
+                </div>
+
+                <!-- Section 2: Clinical -->
+                <div class="section" id="section-2">
+                    <p class="section-hint">Vital signs & clinical readings</p>
+                    <div class="input-grid">
+
+                        <div class="field">
+                            <label for="trestbps">Resting Blood Pressure</label>
+                            <div class="input-wrap">
+                                <input type="number" id="trestbps" placeholder="e.g. 130" min="80" max="220">
+                                <span class="unit">mmHg</span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="chol">Cholesterol</label>
+                            <div class="input-wrap">
+                                <input type="number" id="chol" placeholder="e.g. 246" min="100" max="600">
+                                <span class="unit">mg/dl</span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="thalach">Max Heart Rate</label>
+                            <div class="input-wrap">
+                                <input type="number" id="thalach" placeholder="e.g. 150" min="60" max="220">
+                                <span class="unit">bpm</span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="fbs">Fasting Blood Sugar &gt; 120</label>
+                            <div class="input-wrap select-wrap">
+                                <select id="fbs">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">No (&lt;120 mg/dl)</option>
+                                    <option value="1">Yes (&gt;120 mg/dl)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="restecg">Resting ECG</label>
+                            <div class="input-wrap select-wrap">
+                                <select id="restecg">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">Normal</option>
+                                    <option value="1">ST-T Abnormality</option>
+                                    <option value="2">LV Hypertrophy</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="exang">Exercise Induced Angina</label>
+                            <div class="input-wrap select-wrap">
+                                <select id="exang">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="nav-btns">
+                        <button type="button" class="btn-back" onclick="prevSection(2)">← Back</button>
+                        <button type="button" class="btn-next" onclick="nextSection(2)">Next <span>→</span></button>
+                    </div>
+                </div>
+
+                <!-- Section 3: Advanced -->
+                <div class="section" id="section-3">
+                    <p class="section-hint">Advanced diagnostic parameters</p>
+                    <div class="input-grid">
+
+                        <div class="field">
+                            <label for="oldpeak">ST Depression (Oldpeak)</label>
+                            <div class="input-wrap">
+                                <input type="number" id="oldpeak" step="0.1" placeholder="e.g. 1.0" min="0" max="10">
+                                <span class="unit">mm</span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="slope">ST Slope</label>
+                            <div class="input-wrap select-wrap">
+                                <select id="slope">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="0">Upsloping</option>
+                                    <option value="1">Flat</option>
+                                    <option value="2">Downsloping</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="ca">Major Vessels (CA)</label>
+                            <div class="input-wrap">
+                                <input type="number" id="ca" placeholder="0–3" min="0" max="3">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="thal">Thalassemia</label>
+                            <div class="input-wrap select-wrap">
+                                <select id="thal">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="1">Normal</option>
+                                    <option value="2">Fixed Defect</option>
+                                    <option value="3">Reversible Defect</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="nav-btns">
+                        <button type="button" class="btn-back" onclick="prevSection(3)">← Back</button>
+                        <button type="button" class="btn-predict" onclick="predict()">
+                            <span class="btn-text">Run Analysis</span>
+                            <span class="btn-icon">
+                                <svg viewBox="0 0 24 24" fill="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+        <!-- Result Area -->
+        <div class="result-box" id="result-box">
+            <div class="result-inner">
+                <div class="result-icon" id="result-icon"></div>
+                <div class="result-text" id="result-text"></div>
+                <div class="result-note" id="result-note"></div>
+                <button class="btn-reset" onclick="resetForm()">↺ Run Another Test</button>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>For medical reference only. Always consult a qualified physician.</p>
+        </footer>
+
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
